@@ -1,0 +1,16 @@
+<resources>
+    <!--Account Strings-->
+    <string name="app_name">PROG3210-Messenger</string>
+    <string name="loginUsernameHint">Username</string>
+    <string name="loginPasswordHint">Password</string>
+    <string name="loginButton">Login</string>
+    <string name="createAccountButtonString">Create Account</string>
+    <string name="createAccountEmailAddressHint">Email Address</string>
+    <string name="createAccountPasswordRepeatHint">Repeat Password</string>
+
+    <!--Profile Editor-->
+    <string name="profileEditorDisplayNameLabel">Display Name:</string>
+    <string name="profileEditorBIOLabel">Bio:</string>
+    <string name="profileEditorDOBLabel">Date of Birth:</string>
+    <string name="saveProfileInfoButton">Save Profile</string>
+</resources>

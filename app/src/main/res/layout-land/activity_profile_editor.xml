@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher_round"
+        />
+
+
+    <TextView
+        android:id="@+id/displayNameLabel"
+        android:layout_below="@+id/profileImage"
+        android:text="@string/profileEditorDisplayNameLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/displayNameEditText"
+        android:hint="@string/profileEditorDisplayNameLabel"
+        android:layout_below="@+id/displayNameLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/bioLabel"
+        android:text="@string/profileEditorBIOLabel"
+        android:layout_below="@+id/displayNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/bioEditText"
+        android:hint="@string/profileEditorBIOLabel"
+        android:layout_below="@id/bioLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/DOBLabel"
+        android:text="@string/profileEditorDOBLabel"
+        android:layout_below="@+id/bioEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/dobEditText"
+        android:layout_below="@+id/DOBLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <Button
+        android:id="@+id/saveProfileButton"
+        android:layout_alignParentBottom="true"
+        android:text="@string/saveProfileInfoButton"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+</RelativeLayout>
