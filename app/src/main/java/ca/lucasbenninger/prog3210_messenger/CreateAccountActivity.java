@@ -8,12 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class createAccountActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText username;
     private EditText password;
     private EditText passwordRepeat;
     private Button createAccountButton;
+
+    private Account account;
+    private DB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,7 @@ public class createAccountActivity extends AppCompatActivity implements View.OnC
 
         createAccountButton.setOnClickListener(this);
 
+        db = db.getDatabase(getApplicationContext());
 
     }
 
@@ -34,6 +38,10 @@ public class createAccountActivity extends AppCompatActivity implements View.OnC
         switch (view.getId()){
             case R.id.createAccountButton:
                 if(validateAccount()){
+                    //Clear any existing Account(s)
+                    db.accountDao().removeAccount();
+                    //Add Account to Database
+                    db.accountDao().addAccount(new Account(username.getText().toString(), password.getText().toString(), null, null,null, null));
                     Intent createAccountIntent = new Intent(this, ProfileEditorActivity.class);
                     startActivity(createAccountIntent);
                 }

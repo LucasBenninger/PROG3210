@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".createAccountActivity" />
-        <activity android:name=".ProfileEditorActivity"></activity>
+        <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".ProfileEditorActivity" />
+        <activity android:name=".ConversationListActivity"></activity>
     </application>
 
 </manifest>
