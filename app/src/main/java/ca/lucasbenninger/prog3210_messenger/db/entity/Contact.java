@@ -1,4 +1,4 @@
-package ca.lucasbenninger.prog3210_messenger;
+package ca.lucasbenninger.prog3210_messenger.db.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

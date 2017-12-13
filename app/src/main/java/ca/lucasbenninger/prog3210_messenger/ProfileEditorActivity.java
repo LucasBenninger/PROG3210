@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import ca.lucasbenninger.prog3210_messenger.db.DB;
+import ca.lucasbenninger.prog3210_messenger.db.entity.Account;
+
 public class ProfileEditorActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView profileImage;

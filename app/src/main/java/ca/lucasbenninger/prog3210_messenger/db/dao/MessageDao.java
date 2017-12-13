@@ -1,4 +1,4 @@
-package ca.lucasbenninger.prog3210_messenger;
+package ca.lucasbenninger.prog3210_messenger.db.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
@@ -7,6 +7,8 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import java.util.List;
+
+import ca.lucasbenninger.prog3210_messenger.db.entity.Message;
 
 /**
  * Created by lucas on 04/12/17.

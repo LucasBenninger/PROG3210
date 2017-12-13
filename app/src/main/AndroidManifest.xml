@@ -18,7 +18,13 @@
         </activity>
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".ProfileEditorActivity" />
-        <activity android:name=".ConversationListActivity"></activity>
+        <activity android:name=".ConversationListActivity" />
+        <activity android:name=".StartConversationActivity" />
+        <activity
+            android:name=".AddContactActivity"
+            android:label="@string/title_activity_add_contact"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ConversationActivity"></activity>
     </application>
 
 </manifest>

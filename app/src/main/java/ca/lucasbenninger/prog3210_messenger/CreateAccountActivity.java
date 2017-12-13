@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import ca.lucasbenninger.prog3210_messenger.db.DB;
+import ca.lucasbenninger.prog3210_messenger.db.entity.Account;
+
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText username;

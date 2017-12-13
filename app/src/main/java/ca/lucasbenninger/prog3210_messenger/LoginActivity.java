@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import ca.lucasbenninger.prog3210_messenger.db.DB;
+import ca.lucasbenninger.prog3210_messenger.db.entity.Account;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button loginButton;
@@ -24,6 +27,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         db = DB.getDatabase(getApplicationContext());
+
+        //Check if account present
+        List<Account> accountList = db.accountDao().getAccount();
+        if(accountList.size() > 0 && accountList.get(0) != null){
+            //Account Present
+            goToConversationList();
+        }
 
         loginButton = (Button) findViewById(R.id.loginButton);
         createAccountButton = (Button) findViewById(R.id.createAccountButton);
@@ -41,8 +51,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.loginButton:
                 Toast.makeText(this, "Logging in...", Toast.LENGTH_SHORT).show();
                 if(logIn()){
-                    Intent conversationListIntent = new Intent(this, ConversationListActivity.class);
-                    startActivity(conversationListIntent);
+                    goToConversationList();
                 }else{
                     Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT);
                 }
@@ -68,5 +77,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         }
         return false;
+    }
+
+    private void goToConversationList(){
+        Intent conversationListIntent = new Intent(this, ConversationListActivity.class);
+        startActivity(conversationListIntent);
     }
 }

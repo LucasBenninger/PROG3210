@@ -7,58 +7,53 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.List;
 
 import ca.lucasbenninger.prog3210_messenger.db.DB;
 import ca.lucasbenninger.prog3210_messenger.db.entity.Contact;
-import ca.lucasbenninger.prog3210_messenger.db.entity.Conversation;
 
-public class ConversationListActivity extends AppCompatActivity implements View.OnClickListener {
+public class StartConversationActivity extends AppCompatActivity implements View.OnClickListener {
 
     FloatingActionButton floatingActionButton;
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
 
-    List<Conversation> conversationList;
+    List<Contact> contactList;
 
-    private DB db;
+    DB db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conversation_list);
+        setContentView(R.layout.activity_start_conversation);
 
         db = db.getDatabase(getApplicationContext());
 
-        conversationList = db.conversationDao().getConversations();
+        contactList = db.contactDao().getContacts();
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        //Set RecyclerView Layout
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        //Set RecyclerView Adapter
-        adapter = new ConversationListAdapter(conversationList);
+
+        adapter = new ContactListAdapter(contactList);
         recyclerView.setAdapter(adapter);
 
-        //TODO: Fix this
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
-        floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-
-
-
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.addContactFAB);
         floatingActionButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.floatingActionButton:
-                Intent startConversationIntent = new Intent(this, StartConversationActivity.class);
-                startActivity(startConversationIntent);
+            case R.id.addContactFAB:
+                Toast.makeText(this, "TEst", Toast.LENGTH_SHORT);
+                Intent createContactIntent = new Intent(this, AddContactActivity.class);
+                startActivity(createContactIntent);
                 break;
         }
     }

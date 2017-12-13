@@ -13,4 +13,10 @@
     <string name="profileEditorBIOLabel">Bio:</string>
     <string name="profileEditorDOBLabel">Date of Birth:</string>
     <string name="saveProfileInfoButton">Save Profile</string>
+
+    <string name="addContact">Add Contact</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_add_contact">AddContactActivity</string>
 </resources>
