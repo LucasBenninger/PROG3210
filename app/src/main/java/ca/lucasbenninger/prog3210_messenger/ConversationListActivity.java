@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.view.View;
 import java.util.List;
 
 import ca.lucasbenninger.prog3210_messenger.db.DB;
-import ca.lucasbenninger.prog3210_messenger.db.entity.Contact;
 import ca.lucasbenninger.prog3210_messenger.db.entity.Conversation;
 
 public class ConversationListActivity extends AppCompatActivity implements View.OnClickListener {
@@ -42,6 +42,13 @@ public class ConversationListActivity extends AppCompatActivity implements View.
         adapter = new ConversationListAdapter(conversationList);
         recyclerView.setAdapter(adapter);
 
+        DividerItemDecoration dividerDecoration = new DividerItemDecoration(recyclerView.getContext(), 1);
+        recyclerView.addItemDecoration(dividerDecoration);
+
+        for(Conversation item : conversationList){
+            System.out.println("Test: "+item.contact);
+        }
+
         //TODO: Fix this
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
@@ -57,9 +64,21 @@ public class ConversationListActivity extends AppCompatActivity implements View.
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.floatingActionButton:
-                Intent startConversationIntent = new Intent(this, StartConversationActivity.class);
+                Intent startConversationIntent = new Intent(this, ContactListActivity.class);
                 startActivity(startConversationIntent);
                 break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        recyclerView.requestLayout();
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        recyclerView.requestLayout();
     }
 }

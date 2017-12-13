@@ -14,6 +14,6 @@ public class Conversation {
     public String contact;
 
     public Conversation(String contact){
-
+        this.contact = contact;
     }
 }

@@ -41,7 +41,7 @@ class ConversationListAdapter extends RecyclerView.Adapter<ConversationListAdapt
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.contact_fragment, parent, false);
+        View view = inflater.inflate(R.layout.conversation_fragment, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
 
         return viewHolder;

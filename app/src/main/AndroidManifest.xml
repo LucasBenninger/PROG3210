@@ -19,7 +19,7 @@
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".ProfileEditorActivity" />
         <activity android:name=".ConversationListActivity" />
-        <activity android:name=".StartConversationActivity" />
+        <activity android:name=".ContactListActivity" />
         <activity
             android:name=".AddContactActivity"
             android:label="@string/title_activity_add_contact"
