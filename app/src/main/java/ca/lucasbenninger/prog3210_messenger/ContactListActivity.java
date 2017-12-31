@@ -65,7 +65,7 @@ public class ContactListActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onResume() {
         super.onResume();
-        recyclerView.requestLayout();
+        recyclerView.getAdapter().notifyDataSetChanged();
     }
 
     @Override
