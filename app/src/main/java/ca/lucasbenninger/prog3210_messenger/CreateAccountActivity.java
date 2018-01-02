@@ -20,6 +20,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
     private Account account;
     private DB db;
+    private ServerCommunicator sc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +42,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         switch (view.getId()){
             case R.id.createAccountButton:
                 if(validateAccount()){
-                    //Clear any existing Account(s)
-                    db.accountDao().removeAccount();
-                    //Add Account to Database
-                    db.accountDao().addAccount(new Account(username.getText().toString(), password.getText().toString(), null, null,null, null));
+                    Toast.makeText(this, "Communicating with server!", Toast.LENGTH_SHORT).show();
+                    sc = new ServerCommunicator(getApplicationContext());
+                    sc.createAccount(username.getText().toString(), password.getText().toString());
                     Intent createAccountIntent = new Intent(this, ProfileEditorActivity.class);
                     startActivity(createAccountIntent);
                 }
