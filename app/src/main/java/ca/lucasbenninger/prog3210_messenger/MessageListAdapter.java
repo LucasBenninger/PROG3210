@@ -16,13 +16,14 @@ import java.util.List;
 import ca.lucasbenninger.prog3210_messenger.db.DB;
 import ca.lucasbenninger.prog3210_messenger.db.entity.Contact;
 import ca.lucasbenninger.prog3210_messenger.db.entity.Conversation;
+import ca.lucasbenninger.prog3210_messenger.db.entity.Message;
 
 /**
  * Created by lucas on 11/12/17.
  */
 
-class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.ViewHolder> {
-    List<Contact> contactList;
+class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.ViewHolder> {
+    List<Message> messageList;
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         public CardView cardView;
@@ -42,8 +43,8 @@ class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.ViewHol
         }
     }
 
-    public ContactListAdapter(List<Contact> contactList){
-        this.contactList = contactList;
+    public MessageListAdapter(List<Message> messageList){
+        this.messageList = messageList;
     }
 
     @Override
@@ -57,30 +58,10 @@ class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.ViewHol
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final String userName = contactList.get(position).userName;
-        String bio = contactList.get(position).bio;
+        final String content = messageList.get(position).content;
 
-        holder.contactName.setText(userName);
-        holder.contactBio.setText(bio);
 
-        holder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context context = view.getContext();
-
-                //Create Conversation in database
-                DB db = DB.getDatabase(context.getApplicationContext());
-                Conversation conversation = new Conversation(userName);
-                db.conversationDao().createConversation(conversation);
-
-                //Open new conversation Window
-                Intent conversationListIntent = new Intent(context, ConversationActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("username", userName);
-                conversationListIntent.putExtras(bundle);
-                context.startActivity(conversationListIntent);
-            }
-        });
+        holder.contactName.setText(content);
     }
 
     @Override
@@ -90,9 +71,6 @@ class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.ViewHol
 
     @Override
     public int getItemCount() {
-        return contactList.size();
-    }
-
-    private void startConversation(String username){
+        return messageList.size();
     }
 }

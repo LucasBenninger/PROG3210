@@ -1,5 +1,8 @@
 package ca.lucasbenninger.prog3210_messenger;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -49,14 +52,20 @@ class ConversationListAdapter extends RecyclerView.Adapter<ConversationListAdapt
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String userName = conversationList.get(position).contact;
+        final String userName = conversationList.get(position).contact;
 
         holder.contactName.setText(userName);
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: This
+                Context context = view.getContext();
+                //Open new conversation Window
+                Intent conversationListIntent = new Intent(context, ConversationActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("username", userName);
+                conversationListIntent.putExtras(bundle);
+                context.startActivity(conversationListIntent);
             }
         });
     }
